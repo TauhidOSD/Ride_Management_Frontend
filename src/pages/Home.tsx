@@ -1,9 +1,9 @@
-
+import React from "react";
 
 const Home = () => {
   return (
-    <div className="p-5">
-      <h2 className="text-2xl font-bold">Home Page</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <h1 className="text-3xl font-bold text-gray-800">Welcome to Ride Booking App</h1>
     </div>
   );
 };

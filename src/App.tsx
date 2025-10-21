@@ -1,16 +1,20 @@
-import React from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Booking from "./pages/Booking";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import RideBooking from "./pages/RideBooking";
 import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <Router>
-      <Navbar />
+       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/ride" element={<RideBooking />} />
       </Routes>
     </Router>
   );
