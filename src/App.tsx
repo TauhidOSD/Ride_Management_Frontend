@@ -5,11 +5,14 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import RideBooking from "./pages/RideBooking";
 import Navbar from "./components/Navbar";
+import RideListRTK from "./components/RideListRTK";
 
 const App = () => {
   return (
     <Router>
        <Navbar />
+       <RideListRTK />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
