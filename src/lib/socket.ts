@@ -2,7 +2,7 @@ import { io, Socket } from 'socket.io-client'
 
 let socket: Socket | null = null
 
-export function initSocket(token?: string) {
+export function initSocket(token?: string, _id?: any, role?: any) {
   if (socket) return socket
   socket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
     auth: { token },

@@ -25,6 +25,12 @@ export const baseApi = createApi({
         result ? result.map((r) => ({ type: 'Ride' as const, id: r._id })) : [{ type: 'Ride' as const, id: 'LIST' }],
     }),
 
+    // GET single ride (optional, helpful for ActiveRide)
+    getRideById: builder.query<Ride, string>({
+      query: (id) => `/api/rides/${id}`,
+      providesTags: (result, error, id) => [{ type: 'Ride', id }],
+    }),
+
     // POST book a ride
     bookRide: builder.mutation<Ride, { pickup: any; destination: any; fare?: number; paymentMethod?: string }>({
       query: (body) => ({ url: '/api/rides/book', method: 'POST', body }),
@@ -33,15 +39,30 @@ export const baseApi = createApi({
 
     // PATCH accept a ride (driver)
     acceptRide: builder.mutation<
-      { ok: boolean; ride: Ride },                   // response type
-      { rideId: string; driverId?: string }          // arg type
+      { ok: boolean; ride: Ride }, // response type
+      { rideId: string; driverId?: string } // arg type
     >({
       query: ({ rideId, driverId }) => ({
         url: `/api/rides/${rideId}/status`,
         method: 'PATCH',
         body: { status: 'accepted', driverId },
       }),
-      // invalidate specific ride and list so UI refreshes
+      invalidatesTags: (result, error, { rideId }) => [
+        { type: 'Ride', id: rideId },
+        { type: 'Ride', id: 'LIST' },
+      ],
+    }),
+
+    // Generic status update (picked_up, in_transit, completed, cancelled, etc.)
+    updateRideStatus: builder.mutation<
+      { ok: boolean; ride: Ride },
+      { rideId: string; status: string; driverId?: string }
+    >({
+      query: ({ rideId, status, driverId }) => ({
+        url: `/api/rides/${rideId}/status`,
+        method: 'PATCH',
+        body: { status, driverId },
+      }),
       invalidatesTags: (result, error, { rideId }) => [
         { type: 'Ride', id: rideId },
         { type: 'Ride', id: 'LIST' },
@@ -50,4 +71,10 @@ export const baseApi = createApi({
   }),
 })
 
-export const { useGetRidesQuery, useBookRideMutation, useAcceptRideMutation } = baseApi
+export const {
+  useGetRidesQuery,
+  useGetRideByIdQuery,
+  useBookRideMutation,
+  useAcceptRideMutation,
+  useUpdateRideStatusMutation,
+} = baseApi
