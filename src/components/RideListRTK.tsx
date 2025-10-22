@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+import React from "react";
 import { useGetRidesQuery } from "../api/baseApi";
-
-
 
 export default function RideListRTK() {
   const { data, error, isLoading } = useGetRidesQuery(undefined);
@@ -22,17 +20,28 @@ export default function RideListRTK() {
             className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
           >
             <h3 className="font-semibold mb-2 text-lg">
-              Ride ID: {ride._id.slice(-6)}
+              Ride ID: {(ride._id || "").slice(-6)}
             </h3>
+
+            {/* SAFE: access nested object fields */}
             <p className="text-gray-700 text-sm">
-              <strong>Pickup:</strong> {ride.pickup?.address ?? "N/A"}
+              <strong>Pickup:</strong>{" "}
+              {typeof ride.pickup === "string"
+                ? ride.pickup
+                : ride.pickup?.address ?? "—"}
             </p>
+
             <p className="text-gray-700 text-sm">
-              <strong>Destination:</strong> {ride.destination?.address ?? "N/A"}
+              <strong>Destination:</strong>{" "}
+              {typeof ride.destination === "string"
+                ? ride.destination
+                : ride.destination?.address ?? "—"}
             </p>
+
             <p className="text-gray-700 text-sm">
-              <strong>Fare:</strong> {ride.fare ?? "—"} ৳
+              <strong>Fare:</strong> {typeof ride.fare === "number" ? `${ride.fare} ৳` : (ride.fare ?? "—")}
             </p>
+
             <p className="text-xs text-gray-500 mt-2">
               {ride.createdAt ? new Date(ride.createdAt).toLocaleString() : ""}
             </p>
