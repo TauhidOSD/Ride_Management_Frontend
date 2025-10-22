@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import RideBooking from "./pages/RideBooking";
 import Navbar from "./components/Navbar";
 import RideListRTK from "./components/RideListRTK";
+import DriverDashboard from "./pages/DriverDashboard";
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/ride" element={<RideBooking />} />
+         <Route path="/driver" element={<DriverDashboard />} />
+        
       </Routes>
     </Router>
   );
