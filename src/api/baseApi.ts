@@ -102,6 +102,30 @@ export const baseApi = createApi({
         result ? result.rides.map((r) => ({ type: 'Ride' as const, id: r._id })) : [{ type: 'Ride' as const, id: 'LIST' }],
     }),
 
+
+    getEarnings: builder.query<
+      { period: string; totalRevenue: number; rideCount: number }[],
+      { range?: 'daily' | 'weekly' | 'monthly'; driverId?: string; from?: string; to?: string } | void
+    >({
+      query: (params = {}) => {
+        const { range = 'monthly', driverId, from, to } = params as any
+        const qp = new URLSearchParams()
+        qp.set('range', range)
+        if (driverId) qp.set('driverId', driverId)
+        if (from) qp.set('from', from)
+        if (to) qp.set('to', to)
+        return `/api/analytics/earnings?${qp.toString()}`
+      },
+      transformResponse: (response: any) => {
+        // backend returns { ok: true, data: [...] }
+        return response?.data ?? []
+      },
+      providesTags: [{ type: 'Ride', id: 'LIST' }],
+    }),
+
+
+
+
     // Profile endpoints
     getMyProfile: builder.query<any, void>({
       query: () => '/api/users/me',
@@ -123,4 +147,5 @@ export const {
   useUpdateRideStatusMutation,
   useGetMyProfileQuery,
   useUpdateMyProfileMutation,
+   useGetEarningsQuery,
 } = baseApi
