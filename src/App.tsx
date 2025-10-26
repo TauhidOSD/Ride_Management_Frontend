@@ -25,7 +25,7 @@ const App = () => {
           path="/dashboard"
           element={
             <div className="p-4">
-              <SummaryCards /> {/* ✅ Top summary section */}
+              <SummaryCards />
               <DriverDashboard />
             </div>
           }
