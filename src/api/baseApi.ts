@@ -126,6 +126,37 @@ export const baseApi = createApi({
 
 
 
+    
+    getSummary: builder.query<
+      {
+        totalRides: number;
+        completedRides: number;
+        totalRevenue: number;
+        activeDrivers: number;
+        activeUsers: number;
+      },
+      void
+    >({
+      query: () => '/api/analytics/summary',
+      // small cache time ok for dashboard
+      keepUnusedDataFor: 60,
+      transformResponse: (res: any) => {
+        // if backend returns { ok: true, ... } or direct object, normalize
+        if (res == null) return { totalRides: 0, completedRides: 0, totalRevenue: 0, activeDrivers: 0, activeUsers: 0 }
+        if (res.ok && typeof res === 'object') {
+          // remove ok key if present
+          const { ok, ...rest } = res
+          return rest as any
+        }
+        return res as any
+      },
+      providesTags: [{ type: 'Ride' as const, id: 'LIST' }],
+    }),
+
+
+
+
+
     // Profile endpoints
     getMyProfile: builder.query<any, void>({
       query: () => '/api/users/me',
@@ -147,5 +178,6 @@ export const {
   useUpdateRideStatusMutation,
   useGetMyProfileQuery,
   useUpdateMyProfileMutation,
-   useGetEarningsQuery,
+  useGetEarningsQuery,
+  useGetSummaryQuery,
 } = baseApi
