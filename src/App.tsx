@@ -8,15 +8,22 @@ import DriverDashboard from "./pages/DriverDashboard";
 import RideHistory from "./pages/RideHistory";
 import EarningsDashboard from "./pages/EarningsDashboard";
 import SummaryCards from "./components/SummaryCards"; // ✅ Import added
+import Footer from "./components/Footer";
+import SignUp from "./pages/SignUp";
+
 
 const App = () => {
   return (
     <Router>
       <Navbar />
 
+
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/ride" element={<RideBooking />} />
 
@@ -33,6 +40,7 @@ const App = () => {
         <Route path="/dashboard/earnings" element={<EarningsDashboard />} />
         <Route path="/dashboard/history" element={<RideHistory />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
