@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import DriverDashboard from "./pages/DriverDashboard";
 import RideHistory from "./pages/RideHistory";
 import EarningsDashboard from "./pages/EarningsDashboard";
-import SummaryCards from "./components/SummaryCards"; // ✅ Import added
+import SummaryCards from "./components/SummaryCards"; 
 import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
 

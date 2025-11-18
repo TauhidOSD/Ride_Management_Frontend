@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import type { RootState } from '../app/store'
 import toast from 'react-hot-toast'
 
+
 export default function RideBooking() {
   const [pickup, setPickup] = useState('')
   const [destination, setDestination] = useState('')
