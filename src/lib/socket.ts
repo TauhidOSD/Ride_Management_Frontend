@@ -5,7 +5,7 @@ import { io, Socket } from "socket.io-client";
 
 let socket: Socket | null = null;
 
-export function initSocket(token?: string, _id?: any, p0?: string) {
+export function initSocket(token?: string, _id?: any, _p0?: string) {
   try {
     const authToken = token ?? (typeof window !== "undefined" ? localStorage.getItem("token") : null);
     if (!authToken) return null;

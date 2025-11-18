@@ -4,7 +4,7 @@ import { getSocket, initSocket } from "./socket";
 
 let watchId: number | null = null;
 
-export function startSharingLocation(rideId: string, token?: string, intervalMs = 3000) {
+export function startSharingLocation(rideId: string, token?: string, _intervalMs = 3000) {
   if (!rideId) return;
   // ensure socket
   const s = getSocket() ?? initSocket(token ?? undefined);

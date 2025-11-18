@@ -41,7 +41,7 @@ export const baseApi = createApi({
     // GET single ride (helpful for ActiveRide)
     getRideById: builder.query<Ride, string>({
       query: (id) => `/api/rides/${id}`,
-      providesTags: (result, error, id) => [{ type: 'Ride', id }],
+      providesTags: (_result, _error, id) => [{ type: 'Ride', id }],
     }),
 
     // POST book a ride
@@ -60,7 +60,7 @@ export const baseApi = createApi({
         method: 'PATCH',
         body: { status: 'accepted', driverId },
       }),
-      invalidatesTags: (result, error, { rideId }) => [
+      invalidatesTags: (_result, _error, { rideId }) => [
         { type: 'Ride', id: rideId },
         { type: 'Ride', id: 'LIST' },
       ],
@@ -76,7 +76,7 @@ export const baseApi = createApi({
         method: 'PATCH',
         body: { status, driverId },
       }),
-      invalidatesTags: (result, error, { rideId }) => [
+      invalidatesTags: (_result, _error, { rideId }) => [
         { type: 'Ride', id: rideId },
         { type: 'Ride', id: 'LIST' },
       ],
