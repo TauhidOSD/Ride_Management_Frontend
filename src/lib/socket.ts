@@ -5,14 +5,14 @@ import { io, Socket } from "socket.io-client";
 
 let socket: Socket | null = null;
 
-export function initSocket(token?: string, _id?: any, _p0?: string) {
+export function initSocket(token?: string, _id?: any, p0?: string) {
   try {
     const authToken = token ?? (typeof window !== "undefined" ? localStorage.getItem("token") : null);
     if (!authToken) return null;
 
     if (socket && socket.connected) return socket;
 
-    socket = io((import.meta.env.VITE_API_URL || "http://localhost:5000"), {
+    socket = io((import.meta.env.VITE_API_URL || "https://ride-frontend-mwd6ozchq-komolar-friend.vercel.app"), {
       auth: { token: authToken },
       transports: ["websocket"],
       autoConnect: true,

@@ -10,7 +10,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const apiBase = import.meta.env.VITE_API_URL || "https://ride-frontend-mwd6ozchq-komolar-friend.vercel.app";
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
