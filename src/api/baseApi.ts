@@ -15,7 +15,7 @@ export type Ride = {
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL || 'https://ride-frontend-mwd6ozchq-komolar-friend.vercel.app',
+    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:5173',
     // use `any` for getState to avoid circular import TypeScript errors
     prepareHeaders: (headers, { getState }: { getState: any }) => {
       try {
@@ -126,7 +126,7 @@ export const baseApi = createApi({
 
 
 
-    
+
     getSummary: builder.query<
       {
         totalRides: number;

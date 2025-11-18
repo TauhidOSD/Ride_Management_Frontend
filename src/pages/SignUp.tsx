@@ -16,7 +16,7 @@ export default function SignUp() {
   const [confirm, setConfirm] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const apiBase = import.meta.env.VITE_API_URL || "https://ride-frontend-mwd6ozchq-komolar-friend.vercel.app";
+  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5173";
 
   const validate = () => {
     if (!name.trim()) { toast.error("Name required"); return false; }

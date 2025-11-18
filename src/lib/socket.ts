@@ -12,7 +12,7 @@ export function initSocket(token?: string, _id?: any, p0?: string) {
 
     if (socket && socket.connected) return socket;
 
-    socket = io((import.meta.env.VITE_API_URL || "https://ride-frontend-mwd6ozchq-komolar-friend.vercel.app"), {
+    socket = io((import.meta.env.VITE_API_URL || "http://localhost:5173"), {
       auth: { token: authToken },
       transports: ["websocket"],
       autoConnect: true,
