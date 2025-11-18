@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* src/components/ActiveRideCard.tsx */
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getSocket, initSocket } from "../lib/socket";
 import { useUpdateRideStatusMutation } from "../api/baseApi";
 import toast from "react-hot-toast";

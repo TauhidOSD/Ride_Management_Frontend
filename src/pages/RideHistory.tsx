@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/pages/RideHistory.tsx
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useGetRidesPaginatedQuery } from '../api/baseApi'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../app/store'
@@ -14,7 +14,7 @@ export default function RideHistory() {
   const [search, setSearch] = useState('')
   const [status, setStatus] = useState('')
 
-  const { data, isLoading, isFetching, error } = useGetRidesPaginatedQuery({
+  const { data, isLoading, error } = useGetRidesPaginatedQuery({
     page,
     limit,
     role: role === 'driver' ? 'driver' : role === 'rider' ? 'rider' : undefined,

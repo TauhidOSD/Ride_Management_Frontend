@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/pages/Profile.tsx
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import { useGetMyProfileQuery, useUpdateMyProfileMutation } from '../api/baseApi'
 import toast from 'react-hot-toast'
 

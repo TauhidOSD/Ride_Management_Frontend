@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+
 import { useGetRidesQuery } from "../api/baseApi";
 
 export default function RideListRTK() {
@@ -8,7 +8,7 @@ export default function RideListRTK() {
   if (isLoading) return <div className="p-4">Loading...</div>;
   if (error) return <div className="p-4 text-red-500">Error fetching rides</div>;
 
-  const rides = Array.isArray(data) ? data : data?.rides ?? [];
+  const rides = Array.isArray(data) ? data : data ?? [];
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">

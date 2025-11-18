@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { initSocket } from "../lib/socket";
 
 export default function DriverLiveLocation({ rideId, token }: { rideId: string | null, token?: string | null }) {

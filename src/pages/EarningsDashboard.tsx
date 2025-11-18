@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 // src/pages/EarningsDashboard.tsx
-import React, { useMemo, useState } from 'react'
+import  { useMemo, useState } from 'react'
 import { useGetEarningsQuery } from '../api/baseApi'
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, LineChart, Line,

@@ -24,7 +24,7 @@ function StatCard({ title, value, icon }: { title: string; value: string | numbe
 }
 
 export default function SummaryCards() {
-  const { data, isLoading, isFetching, error, refetch } = useGetSummaryQuery()
+  const { data, isFetching, error, refetch } = useGetSummaryQuery()
 
   // fallback values
   const totalRides = data?.totalRides ?? 0
